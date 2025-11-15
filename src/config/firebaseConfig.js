@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC4dT3XY6vStM6QH1SF9qicZoVJ9kbMpxg",
-  authDomain: "portfolio-imagedb.firebaseapp.com",
-  projectId: "portfolio-imagedb",
-  storageBucket: "portfolio-imagedb.appspot.com",
-  messagingSenderId: "476468158189",
-  appId: "1:476468158189:web:0ab150c9faa06934cc36e4",
-  measurementId: "G-LD8S8JHJEW"
+  apiKey: process.env.APIKEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
