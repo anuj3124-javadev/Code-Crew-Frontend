@@ -77,7 +77,7 @@ const Team = () => {
                     <div key={member.id} className="member-card">
                       <div className="member-header">
                         <img 
-                          src={`http://localhost:5000/uploads/profiles/${member.profilePhoto}`}
+                          src={member.profilePhoto}
                           alt={member.name}
                           className="member-photo"
                         />
@@ -140,7 +140,7 @@ const Team = () => {
                         <h3 className="team-name">{team.name}</h3>
                         <div className="team-leader">
                           <img 
-                            src={`http://localhost:5000/uploads/profiles/${team.teamLeader.profilePhoto}`}
+                            src={team.teamLeader.profilePhoto}
                             alt={team.teamLeader.name}
                             className="leader-photo"
                           />
@@ -158,7 +158,7 @@ const Team = () => {
                           {team.members.map(member => (
                             <div key={member.id} className="team-member-item">
                               <img 
-                                src={`http://localhost:5000/uploads/profiles/${member.profilePhoto}`}
+                                src={member.profilePhoto}
                                 alt={member.name}
                                 className="member-thumbnail"
                               />

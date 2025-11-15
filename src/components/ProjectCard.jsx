@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
     <div className="project-card">
       <div className="project-image">
         <img 
-          src={`http://localhost:5000/uploads/projects/${project.thumbnail}`} 
+          src={project.thumbnail} 
           alt={project.name}
           className="project-thumbnail"
         />

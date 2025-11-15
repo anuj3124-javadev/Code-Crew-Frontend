@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { userAPI, projectAPI } from '../api/authAPI';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../config/firebaseConfig"
 import '../styles/pages/Profile.css';
 
 const Profile = () => {
@@ -92,10 +94,15 @@ const Profile = () => {
       submitData.append('bio', formData.bio);
       submitData.append('position', formData.position);
       submitData.append('skills', JSON.stringify(formData.skills));
-
+      
       if (profilePhoto) {
-        submitData.append('profilePhoto', profilePhoto);
-      }
+      let imageUrl = null;
+      const safeName = profilePhoto.name.replace(/[^a-zA-Z0-9.]/g, "_");
+      const imageRef = ref(storage, `profile_photos/${Date.now()}-${safeName}`);
+      await uploadBytes(imageRef, profilePhoto);
+      imageUrl = await getDownloadURL(imageRef);
+      submitData.append('profilePhoto', imageUrl);
+    }
 
       const response = await userAPI.updateProfile(submitData);
       updateUser(response.data.user);
@@ -140,7 +147,7 @@ const Profile = () => {
                   src={
                     profilePhoto 
                       ? URL.createObjectURL(profilePhoto)
-                      : `http://localhost:5000/uploads/profiles/${profile.profilePhoto}`
+                      : profile.profilePhoto
                   }
                   alt={profile.name}
                   className="profile-photo-large"
@@ -308,7 +315,7 @@ const Profile = () => {
                 {userProjects.slice(0, 5).map(project => (
                   <div key={project.id} className="project-item-mini">
                     <img 
-                      src={`http://localhost:5000/uploads/projects/${project.thumbnail}`}
+                      src={project.thumbnail}
                       alt={project.name}
                       className="project-thumbnail-mini"
                     />

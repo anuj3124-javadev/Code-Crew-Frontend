@@ -14,11 +14,6 @@ const Footer = () => {
           <p className="footer-description">
             Building amazing projects with talented teams. Showcasing innovation and collaboration.
           </p>
-          <div className="social-links">
-            <a href="#" className="social-link">GitHub</a>
-            <a href="#" className="social-link">LinkedIn</a>
-            <a href="#" className="social-link">Twitter</a>
-          </div>
         </div>
 
         <div className="footer-section">

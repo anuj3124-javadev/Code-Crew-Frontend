@@ -61,7 +61,7 @@ const Navbar = () => {
               </Link>
               <div className="nav-user">
                 <img 
-                  src={`http://localhost:5000/uploads/profiles/${user?.profilePhoto}`} 
+                  src={user?.profilePhoto }
                   alt={user?.name}
                   className="user-avatar"
                 />
@@ -91,13 +91,6 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Login
-              </Link>
-              <Link 
-                to="/register" 
-                className="nav-link auth-link primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Register
               </Link>
             </div>
           )}

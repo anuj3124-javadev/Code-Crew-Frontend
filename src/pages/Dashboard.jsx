@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ProjectModal from '../components/ProjectModal';
 import TeamModal from '../components/TeamModal';
+import { Link } from 'react-router-dom';
 import '../styles/pages/Dashboard.css';
 
 const Dashboard = () => {
@@ -89,12 +90,29 @@ const Dashboard = () => {
             + New Project
           </button>
           {user.role === 'TL' && (
+            <>
             <button 
               onClick={() => setShowTeamModal(true)}
               className="btn btn-secondary"
             >
-              + New Team
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
+    <path d="M12 7.5C12 9.433 10.433 11 8.5 11C6.567 11 5 9.433 5 7.5C5 5.567 6.567 4 8.5 4C10.433 4 12 5.567 12 7.5Z" stroke="#141B34" stroke-width="1.5" />
+    <path d="M13.5 11C15.433 11 17 9.433 17 7.5C17 5.567 15.433 4 13.5 4" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M13.1429 20H3.85714C2.83147 20 2 19.2325 2 18.2857C2 15.9188 4.07868 14 6.64286 14H10.3571C11.4023 14 12.3669 14.3188 13.1429 14.8568" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M19 14V20M22 17L16 17" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" />
+</svg>
             </button>
+            <Link 
+                            to="/register" 
+                            className="btn btn-secondary"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
+    <path d="M14 8.5C14 5.73858 11.7614 3.5 9 3.5C6.23858 3.5 4 5.73858 4 8.5C4 11.2614 6.23858 13.5 9 13.5C11.7614 13.5 14 11.2614 14 8.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M16 20.5C16 16.634 12.866 13.5 9 13.5C5.13401 13.5 2 16.634 2 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M19 9V15M22 12L16 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                          </Link>
+            </>
           )}
         </div>
       </div>
@@ -246,7 +264,7 @@ const Dashboard = () => {
                         {team.members?.slice(0, 5).map(member => (
                           <img 
                             key={member.id}
-                            src={`http://localhost:5000/uploads/profiles/${member.profilePhoto}`}
+                            src={member.profilePhoto}
                             alt={member.name}
                             className="member-avatar"
                             title={member.name}

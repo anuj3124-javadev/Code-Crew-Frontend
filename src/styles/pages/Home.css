@@ -90,20 +90,18 @@
 }
 
 .hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top:2%;
   animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .floating-cards {
   position: relative;
-  width: 420px;
-  height: 420px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .card {
-  position: absolute;
   width: 150px;
   height: 150px;
   background: rgba(255, 255, 255, 0.15);
@@ -125,23 +123,23 @@
 }
 
 .card-1 {
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
   animation-delay: 0s;
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%);
 }
 
 .card-2 {
-  top: 0;
-  right: 0;
+  /* top: 0;
+  right: 0; */
   animation-delay: 2s;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%);
 }
 
 .card-3 {
-  bottom: 0;
+  /* bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   animation-delay: 4s;
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
 }
@@ -528,6 +526,7 @@
   .hero-description {
     font-size: var(--text-lg);
     margin: 0 auto var(--space-6);
+    color: rgb(214, 214, 214);
   }
 
   .hero-actions {

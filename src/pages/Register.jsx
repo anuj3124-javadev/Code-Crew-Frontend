@@ -32,14 +32,8 @@ const Register = () => {
     setError('');
 
     // Validation
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      setLoading(false);
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters long');
+        if (formData.password.length < 2) {
+      setError('Password must be at least 2 characters long');
       setLoading(false);
       return;
     }
@@ -47,10 +41,7 @@ const Register = () => {
     try {
       const { confirmPassword, ...registerData } = formData;
       const response = await authAPI.register(registerData);
-      const { user, token } = response.data;
-      
-      login(user, token);
-      navigate('/dashboard');
+      alert("Member add successfully");
     } catch (error) {
       setError(error.response?.data?.message || 'Registration failed. Please try again.');
     } finally {
@@ -63,8 +54,7 @@ const Register = () => {
       <div className="auth-container">
         <div className="auth-card">
           <div className="auth-header">
-            <h2>Create Account</h2>
-            <p>Join our platform and start collaborating</p>
+            <h2>Add New Member</h2><hr/>
           </div>
 
           {error && (
@@ -127,29 +117,13 @@ const Register = () => {
                 Password
               </label>
               <input
-                type="password"
+                type="text"
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 className="form-input"
                 placeholder="Enter your password"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="confirmPassword" className="form-label">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="form-input"
-                placeholder="Confirm your password"
                 required
               />
             </div>
@@ -162,15 +136,6 @@ const Register = () => {
               {loading ? 'Creating Account...' : 'Create Account'}
             </button>
           </form>
-
-          <div className="auth-footer">
-            <p>
-              Already have an account?{' '}
-              <Link to="/login" className="auth-link">
-                Sign in here
-              </Link>
-            </p>
-          </div>
         </div>
       </div>
     </div>

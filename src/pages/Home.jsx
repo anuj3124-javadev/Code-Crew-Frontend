@@ -65,9 +65,9 @@ const Home = () => {
         </div>
         <div className="hero-visual">
           <div className="floating-cards">
-            <div className="card card-1">🚀</div>
-            <div className="card card-2">💡</div>
-            <div className="card card-3">👥</div>
+            <div className="card card-1">💡</div>
+            <div className="card card-2">👥</div>
+            <div className="card card-3">🚀</div>
           </div>
         </div>
       </section>
@@ -113,7 +113,7 @@ const Home = () => {
               {featuredMembers.map(member => (
                 <div key={member.id} className="team-member-card">
                   <img 
-                    src={`http://localhost:5000/uploads/profiles/${member.profilePhoto}`}
+                    src={member.profilePhoto}
                     alt={member.name}
                     className="member-photo"
                   />
@@ -156,10 +156,6 @@ const Home = () => {
             <div className="stat-item">
               <h3 className="stat-number">5+</h3>
               <p className="stat-label">Technologies</p>
-            </div>
-            <div className="stat-item">
-              <h3 className="stat-number">100%</h3>
-              <p className="stat-label">Client Satisfaction</p>
             </div>
           </div>
         </div>

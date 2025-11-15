@@ -19,7 +19,7 @@ import Profile from './pages/Profile';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading  } = useAuth();
   
   if (loading) {
     return <LoadingSpinner />;
@@ -38,6 +38,17 @@ const PublicRoute = ({ children }) => {
   
   return !isAuthenticated ? children : <Navigate to="/dashboard" />;
 };
+
+// route only for admin
+const AdminRoute = ({children})=>{
+  const { isAuthenticated, loading , user } = useAuth();
+  
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+  
+  return isAuthenticated && user?.role == "TL" ? children : <Navigate to="/dashboard" />;
+}
 
 function App() {
   return (
@@ -62,15 +73,24 @@ function App() {
                   </PublicRoute>
                 } 
               />
-              <Route 
+              {/* <Route 
                 path="/register" 
                 element={
                   <PublicRoute>
                     <Register />
                   </PublicRoute>
                 } 
-              />
+              /> */}
               
+              {/* Admin Protected Routes */}
+              <Route 
+                path="/register" 
+                element={
+                  <AdminRoute>
+                    <Register />
+                  </AdminRoute>
+                } 
+              />
               {/* Protected Routes */}
               <Route 
                 path="/dashboard" 

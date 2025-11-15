@@ -58,7 +58,7 @@ const ProjectDetail = () => {
         <div className="project-header">
           <div className="project-image">
             <img 
-              src={`http://localhost:5000/uploads/projects/${project.thumbnail}`}
+              src={project.thumbnail}
               alt={project.name}
               className="project-thumbnail-large"
             />
@@ -136,7 +136,7 @@ const ProjectDetail = () => {
                 {project.team.members.map(member => (
                   <div key={member.id} className="team-member">
                     <img 
-                      src={`http://localhost:5000/uploads/profiles/${member.profilePhoto}`}
+                      src={member.profilePhoto}
                       alt={member.name}
                       className="member-photo"
                     />
@@ -159,7 +159,7 @@ const ProjectDetail = () => {
             <h3>Project Creator</h3>
             <div className="creator-info">
               <img 
-                src={`http://localhost:5000/uploads/profiles/${project.creator.profilePhoto}`}
+                src={project.creator.profilePhoto}
                 alt={project.creator.name}
                 className="creator-photo"
               />

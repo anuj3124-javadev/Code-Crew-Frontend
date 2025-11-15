@@ -158,7 +158,7 @@ const TeamModal = ({ onClose, onTeamCreated }) => {
                   <div key={member.id} className="member-item">
                     <div className="member-info">
                       <img 
-                        src={`http://localhost:5000/uploads/profiles/${member.profilePhoto}`}
+                        src={member.profilePhoto}
                         alt={member.name}
                         className="member-avatar"
                       />
